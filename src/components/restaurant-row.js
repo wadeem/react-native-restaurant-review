@@ -22,29 +22,37 @@ class RestaurantRow extends React.Component {
         const {place, index} = this.props;
 
         return <View key={place.name} style={
-            [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
+            {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}
         }>
+            <View style={styles.row}>
 
-            <View style={styles.edges}>
-                <Text>{index + 1}</Text>
+                <View style={styles.edges}>
+                    <Text>{index + 1}</Text>
+                </View>
+
+                <View style={styles.nameAddress}>
+                    <Text>{place.name}</Text>
+                    <Text style={styles.address}>{place.address}</Text>
+                </View>
+
+                <View style={styles.edges}>
+
+                    <TouchableHighlight onPress={this.infoPressed}
+                                        style={styles.button}
+                                        underlayColor="#5398dc">
+
+                        <Text style={styles.buttonText}>Info</Text>
+                    </TouchableHighlight>
+
+                </View>
             </View>
-            <View style={styles.nameAddress}>
-                <Text>{place.name}</Text>
-                <Text style={styles.address}>{place.address}</Text>
-            </View>
-            <View style={styles.edges}>
-
-                <TouchableHighlight onPress={this.infoPressed}
-                                    style={styles.button}
-                                    underlayColor="#5398dc">
-                    <Text style={styles.buttonText}>Info</Text>
-                </TouchableHighlight>
-
-            </View>
-
             {
-                this.state.showInfo && <View><Text>Extra info</Text></View>
+                this.state.showInfo &&
+                <View style={styles.info}>
+                    <Text>Restaurant info</Text>
+                </View>
             }
+
         </View>;
     }
 };
@@ -74,5 +82,14 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 12,
         color: '#0066cc',
+    },
+    info: {
+        marginHorizontal: 40,
+        marginVertical: 10,
+        padding: 10,
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 4,
     },
 });
