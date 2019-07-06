@@ -8,6 +8,8 @@ const restaurants = [
     {name: 'Taco place', address: '33 silver rd'},
     {name: 'Burger prince', address: '123 happy rd'},
     {name: 'BBQ friends', address: '78 big str'},
+    {name:"Fancy salads",address:"11 eastern road"},
+    {name:"Yozu",address:"32 bamboo road"}
 ];
 
 class App extends React.Component {
@@ -31,7 +33,7 @@ class App extends React.Component {
                        value={this.state.search}
             />
 
-            <ScrollView>
+            <ScrollView contentContainerStyle={{paddingTop:30}}>
                 {restaurants.filter(place => !this.state.search ||
                     place.name.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1)
                     .map((place, index) =>
@@ -70,7 +72,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         padding: 10,
         paddingHorizontal: 20,
-        marginBottom: 30,
         fontSize: 16,
         color: '#444',
         borderColor: '#ddd',
