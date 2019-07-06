@@ -35,7 +35,7 @@ class RestaurantRow extends React.Component {
             <View style={styles.edges}>
 
                 <TouchableOpacity onPress={this.infoPressed} style={styles.button}>
-                    <Text>Info</Text>
+                    <Text style={styles.buttonText}>Info</Text>
                 </TouchableOpacity>
 
             </View>
@@ -68,5 +68,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 3,
         backgroundColor: '#fff',
+    },
+    buttonText: {
+        fontSize: 12,
+        color: '#0066cc',
     },
 });
