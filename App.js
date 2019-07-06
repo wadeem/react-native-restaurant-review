@@ -12,6 +12,7 @@ const restaurants = [
     {name: 'Fancy salads', address: '11 eastern road'},
     {name: 'Yozu', address: '32 bamboo road'},
     {name: 'Juicy breakfast', address: '1st major avenue'},
+    {name: 'Miracle tea', address: '2 deli road'},
 ];
 
 class App extends React.Component {
@@ -44,7 +45,7 @@ class App extends React.Component {
 
                 keyExtractor={item => item.name}
 
-                initialNumToRender={1}
+                initialNumToRender={10}
 
             />
 

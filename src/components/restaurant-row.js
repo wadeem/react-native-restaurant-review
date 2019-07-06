@@ -1,31 +1,72 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    TouchableHighlight,
+    TouchableWithoutFeedback,
+} from 'react-native';
 import React from 'react';
 
-const RestaurantRow = ({place, index}) => {
+class RestaurantRow extends React.Component {
 
-    return <View key={place.name} style={
-        [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
-    }>
+    state = {
+        showInfo: false,
+    };
 
-        <View style={styles.edges}>
-            <Text>{index + 1}</Text>
-        </View>
-        <View style={styles.nameAddress}>
-            <Text>{place.name}</Text>
-            <Text style={styles.address}>{place.address}</Text>
-        </View>
-        <View style={styles.edges}>
-            <Text>Info</Text>
-        </View>
-    </View>;
+    infoPressed = () => {
+        this.setState({showInfo: !this.state.showInfo});
+    };
 
+    render() {
+        const {place, index} = this.props;
+
+        return <View key={place.name} style={
+            [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
+        }>
+
+            <View style={styles.edges}>
+                <Text>{index + 1}</Text>
+            </View>
+            <View style={styles.nameAddress}>
+                <Text>{place.name}</Text>
+                <Text style={styles.address}>{place.address}</Text>
+            </View>
+            <View style={styles.edges}>
+
+                <TouchableOpacity onPress={this.infoPressed} style={styles.button}>
+                    <Text>Info</Text>
+                </TouchableOpacity>
+
+            </View>
+
+            {
+                this.state.showInfo && <View><Text>Extra info</Text></View>
+            }
+        </View>;
+    }
 };
 
 export default RestaurantRow;
 
+
 const styles = StyleSheet.create({
     row: {flexDirection: 'row'},
-    edges: {flex: 1, justifyContent: 'center', alignItems: 'center', padding: 5},
+    edges: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5,
+        minWidth: 50,
+    },
     nameAddress: {flex: 8, flexDirection: 'column'},
     address: {color: 'grey'},
+    button: {
+        borderWidth: 1,
+        borderColor: '#0066cc',
+        borderRadius: 14,
+        paddingHorizontal: 10,
+        paddingVertical: 3,
+        backgroundColor: '#fff',
+    },
 });
