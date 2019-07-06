@@ -1,7 +1,14 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
+const restaurants = [
+    {name: 'React Cafe', address: '123 anywhere str'},
+    {name: 'Awesome pizza', address: '799 main str'},
+    {name: 'Taco place', address: '33 silver rd'},
+];
+
 class App extends React.Component {
+
 
     render() {
 
@@ -11,10 +18,14 @@ class App extends React.Component {
                 color: '#0066cc', fontWeight: '300', textAlign: 'center',
             }}>Restaurant Review</Text>
 
-            <Text>React Cafe</Text>
-            <Text style={{color: 'grey'}}>123 anywhere str</Text>
-            <Text>Awesome pizza</Text>
-            <Text style={{color: 'grey'}}>23 main bld</Text>
+            {restaurants.map((place, index) => <View key={place.name}>
+                    <Text>{index + 1}</Text>
+                    <Text>{place.name}</Text>
+                    <Text style={{color: 'grey'}}>{place.address}</Text>
+                    <Text>Info</Text>
+                </View>,
+            )}
+
         </View>;
 
     }
