@@ -10,14 +10,13 @@ const restaurants = [
 
 class App extends React.Component {
 
-
     render() {
 
         return <View style={{flex: 1}}>
 
             <Text style={headerStyle.header}>Restaurant Review</Text>
 
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} placeholder="Live Search"/>
 
 
             {restaurants.map((place, index) =>
