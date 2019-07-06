@@ -10,33 +10,45 @@ const restaurants = [
 
 class App extends React.Component {
 
+    state = {
+        search: null,
+    };
+
     render() {
 
         return <View style={{flex: 1}}>
 
             <Text style={headerStyle.header}>Restaurant Review</Text>
 
-            <TextInput style={styles.input} placeholder="Live Search"/>
+            <TextInput style={styles.input}
+                       placeholder="Live Search"
+                       onChangeText={text => {
+                           this.setState({search: text});
+                       }}
+                       value={this.state.search}
+            />
 
 
-            {restaurants.map((place, index) =>
+            {restaurants.filter(place => !this.state.search ||
+                place.name.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1)
+                .map((place, index) =>
 
-                <View key={place.name} style={
-                    [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
-                }>
+                    <View key={place.name} style={
+                        [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
+                    }>
 
-                    <View style={styles.edges}>
-                        <Text>{index + 1}</Text>
-                    </View>
-                    <View style={styles.nameAddress}>
-                        <Text>{place.name}</Text>
-                        <Text style={styles.address}>{place.address}</Text>
-                    </View>
-                    <View style={styles.edges}>
-                        <Text>Info</Text>
-                    </View>
-                </View>,
-            )}
+                        <View style={styles.edges}>
+                            <Text>{index + 1}</Text>
+                        </View>
+                        <View style={styles.nameAddress}>
+                            <Text>{place.name}</Text>
+                            <Text style={styles.address}>{place.address}</Text>
+                        </View>
+                        <View style={styles.edges}>
+                            <Text>Info</Text>
+                        </View>
+                    </View>,
+                )}
 
         </View>;
 
