@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import headerStyle from './header-style.js';
 
 const restaurants = [
     {name: 'React Cafe', address: '123 anywhere str'},
@@ -13,10 +14,14 @@ class App extends React.Component {
     render() {
 
         return <View style={{flex: 1}}>
-            <Text style={styles.header}>Restaurant Review</Text>
+            <Text style={headerStyle.header}>Restaurant Review</Text>
 
             {restaurants.map((place, index) =>
-                <View key={place.name} style={styles.row}>
+
+                <View key={place.name} style={
+                    [styles.row, {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}]
+                }>
+
                     <View style={styles.edges}>
                         <Text>{index + 1}</Text>
                     </View>
@@ -38,14 +43,9 @@ class App extends React.Component {
 
 export default App;
 
-const styles = {
-
-    header: {
-        padding: 40, fontSize: 30,
-        color: '#0066cc', fontWeight: '300', textAlign: 'center',
-    },
+const styles = StyleSheet.create({
     row: {flexDirection: 'row'},
-    edges: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+    edges: {flex: 1, justifyContent: 'center', alignItems: 'center', padding: 5},
     nameAddress: {flex: 8, flexDirection: 'column'},
     address: {color: 'grey'},
-};
+});
