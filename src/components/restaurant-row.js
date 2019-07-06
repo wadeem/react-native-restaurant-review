@@ -34,9 +34,11 @@ class RestaurantRow extends React.Component {
             </View>
             <View style={styles.edges}>
 
-                <TouchableOpacity onPress={this.infoPressed} style={styles.button}>
+                <TouchableHighlight onPress={this.infoPressed}
+                                    style={styles.button}
+                                    underlayColor="#5398dc">
                     <Text style={styles.buttonText}>Info</Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
 
             </View>
 
