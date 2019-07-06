@@ -1,45 +1,24 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+class App extends React.Component {
 
-const App = () => {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.welcome}>Restaurant review</Text>
-        </View>
-    );
-};
+    render() {
 
-const styles = StyleSheet.create({
+        return <View>
+            <Text style={{
+                padding: 40, fontSize: 30,
+                color: '#0066cc', fontWeight: '300', textAlign: 'center',
+            }}>Restaurant Review</Text>
 
-    welcome: {fontSize: 20, textAlign: 'center', backgroundColor: '#f5fcff'},
-    container: {flex: 1, justifyContent: 'center', margin: 10},
+            <Text>React Cafe</Text>
+            <Text style={{color: 'grey'}}>123 anywhere str</Text>
+            <Text>Awesome pizza</Text>
+            <Text style={{color: 'grey'}}>23 main bld</Text>
+        </View>;
 
-    scrollView: {
-        backgroundColor: Colors.lighter,
-    },
-    body: {
-        backgroundColor: Colors.white,
-    },
-    sectionContainer: {
-        marginTop: 32,
-        paddingHorizontal: 24,
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        color: Colors.black,
-    },
-    sectionDescription: {
-        marginTop: 8,
-        fontSize: 18,
-        fontWeight: '400',
-        color: Colors.dark,
-    },
-    highlight: {
-        fontWeight: '700',
-    },
-});
+    }
+
+}
 
 export default App;
