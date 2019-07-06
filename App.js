@@ -13,21 +13,18 @@ class App extends React.Component {
     render() {
 
         return <View style={{flex: 1}}>
-            <Text style={{
-                padding: 40, fontSize: 30,
-                color: '#0066cc', fontWeight: '300', textAlign: 'center',
-            }}>Restaurant Review</Text>
+            <Text style={styles.header}>Restaurant Review</Text>
 
             {restaurants.map((place, index) =>
-                <View key={place.name} style={{flexDirection: 'row'}}>
-                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <View key={place.name} style={styles.row}>
+                    <View style={styles.edges}>
                         <Text>{index + 1}</Text>
                     </View>
-                    <View style={{flex: 8, flexDirection: 'column'}}>
+                    <View style={styles.nameAddress}>
                         <Text>{place.name}</Text>
-                        <Text style={{color: 'grey'}}>{place.address}</Text>
+                        <Text style={styles.address}>{place.address}</Text>
                     </View>
-                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={styles.edges}>
                         <Text>Info</Text>
                     </View>
                 </View>,
@@ -40,3 +37,15 @@ class App extends React.Component {
 }
 
 export default App;
+
+const styles = {
+
+    header: {
+        padding: 40, fontSize: 30,
+        color: '#0066cc', fontWeight: '300', textAlign: 'center',
+    },
+    row: {flexDirection: 'row'},
+    edges: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+    nameAddress: {flex: 8, flexDirection: 'column'},
+    address: {color: 'grey'},
+};
