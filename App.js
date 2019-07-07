@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View, FlatList} from 'react-native';
+import {StyleSheet, Text, TextInput, View, FlatList, Image} from 'react-native';
 import Header from './src/components/header.js';
 import RestaurantRow from './src/components/restaurant-row.js';
-import axios from "axios";
+import axios from 'axios';
+import PizzaImage from './src/images/pizza.png';
 
 class App extends React.Component {
 
@@ -20,6 +21,10 @@ class App extends React.Component {
         console.log('search', this.state.search);
 
         return <View style={{flex: 1}}>
+
+            <View style={{alignItems: 'center', marginTop: 30}}>
+                <Image source={PizzaImage}/>
+            </View>
 
             <Header/>
 
