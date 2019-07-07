@@ -8,6 +8,7 @@ import {
     Image,
 } from 'react-native';
 import React from 'react';
+import Stars from './stars.js';
 
 class RestaurantRow extends React.Component {
 
@@ -29,8 +30,8 @@ class RestaurantRow extends React.Component {
         }>
             <View style={styles.row}>
 
-                <View style={styles.edges}>
-                    <Text>{index + 1}</Text>
+                <View style={styles.stars}>
+                    <Stars rating={place.rating} />
                 </View>
 
                 <View style={styles.nameAddress}>
@@ -76,6 +77,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 5,
+        minWidth: 50,
+    },
+    stars: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
         padding: 5,
         minWidth: 50,
     },
