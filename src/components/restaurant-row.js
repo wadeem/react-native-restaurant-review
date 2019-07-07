@@ -53,11 +53,13 @@ class RestaurantRow extends React.Component {
                 this.state.showInfo &&
                 <View style={styles.info}>
                     <Text>Restaurant info</Text>
-                    <Image source={{
-                        uri: `http://192.168.1.171:3000/images/${place.image}`,
-                        height: 100,
-                        width: 100,
-                    }}/>
+                    <Image source={{uri: `http://192.168.1.171:3000/images/${place.image}`}}
+                           style={{
+                               flex: 1,
+                               height: 100,
+                           }}
+                           resizeMode="contain"
+                    />
                 </View>
             }
 
