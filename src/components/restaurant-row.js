@@ -5,6 +5,7 @@ import {
     TouchableOpacity,
     TouchableHighlight,
     TouchableWithoutFeedback,
+    Image,
 } from 'react-native';
 import React from 'react';
 
@@ -20,6 +21,8 @@ class RestaurantRow extends React.Component {
 
     render() {
         const {place, index} = this.props;
+
+        console.log('place.image', place.image);
 
         return <View key={place.name} style={
             {backgroundColor: index % 2 === 0 ? 'white' : '#f3f3f7'}
@@ -50,6 +53,11 @@ class RestaurantRow extends React.Component {
                 this.state.showInfo &&
                 <View style={styles.info}>
                     <Text>Restaurant info</Text>
+                    <Image source={{
+                        uri: `http://192.168.1.171:3000/images/${place.image}`,
+                        height: 100,
+                        width: 100,
+                    }}/>
                 </View>
             }
 
